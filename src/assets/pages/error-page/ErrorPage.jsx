@@ -4,7 +4,7 @@ import {Link} from "react-router-dom";
 function ErrorPage() {
     return (
         <>
-            <p>ErrorPage</p>
+            <h1>ErrorPage</h1>
             <p>Take me back to the <Link to="/">homepage!</Link></p>
         </>
     )
