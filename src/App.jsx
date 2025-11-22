@@ -14,8 +14,8 @@ function App() {
 
     return (
         <>
+            <div className="page-container">
             <Navigation/>
-
             <main>
                 <Routes>
                     <Route path="/" element={<HomePage/>}/>
@@ -30,6 +30,7 @@ function App() {
             <footer>
                 <p>footer</p>
             </footer>
+                </div>
         </>
     )
 }

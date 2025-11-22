@@ -3,7 +3,17 @@ import './HomePage.css'
 function HomePage() {
     return (
         <>
-            <p>HomePage</p>
+            <main>
+                <section className="intro-section">
+                    <h1>Cocktail Counter</h1>
+                </section>
+                <section>
+                    <p>populaire cocktail cards</p>
+                </section>
+                <section>
+                    <p>Random cocktail</p>
+                </section>
+            </main>
         </>
     )
 }
