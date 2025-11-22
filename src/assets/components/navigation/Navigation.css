@@ -47,6 +47,28 @@ span img {
     flex-basis: 150px;
 }
 
+nav ul a, nav ul a:visited {
+    color: var(--black-color);
+    text-decoration: none;
+}
+
+.default-link {
+    border-bottom: 1px solid transparent;
+}
+
+.active-link {
+    border-bottom: 1px solid var(--black-color);
+}
+
+.active-button {
+    background-color: #1E9A22;
+    border: 2px solid #1E9A22;
+}
+
+.default-button {
+    background-color: var(--accent-color)
+}
+
 @media (min-width: 992px) {
     span {
         flex-basis: 200px;

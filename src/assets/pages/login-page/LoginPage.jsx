@@ -3,7 +3,14 @@ import './LoginPage.css'
 function LoginPage() {
     return (
         <>
-            <p>LoginPage</p>
+            <main>
+                <section className="intro-section">
+                    <h1>Cocktail Counter</h1>
+                </section>
+                <section>
+                    <p>LoginPage form card</p>
+                </section>
+            </main>
         </>
     )
 }

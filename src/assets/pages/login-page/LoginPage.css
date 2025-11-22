@@ -1,0 +1,12 @@
+.intro-section {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    min-height: 200px;
+    background: var(--secondary-color);
+}
+
+.intro-section h1 {
+    font-size: 70px;
+}
