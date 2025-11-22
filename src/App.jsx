@@ -7,12 +7,15 @@ import ProfilePage from "./assets/pages/profile-page/ProfilePage.jsx";
 import ErrorPage from "./assets/pages/error-page/ErrorPage.jsx";
 import LoginPage from "./assets/pages/login-page/LoginPage.jsx";
 import RegisterPage from "./assets/pages/register-page/RegisterPage.jsx";
+import Navigation from "./assets/components/navigation/Navigation.jsx";
 
 
 function App() {
 
     return (
         <>
+            <Navigation/>
+
             <main>
                 <Routes>
                     <Route path="/" element={<HomePage/>}/>

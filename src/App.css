@@ -34,3 +34,20 @@ p {
   margin: 20px 0;
   line-height: 1.5;
 }
+
+/* ---------------------------------------Buttons--------------------------------------------- */
+
+button {
+  border-radius: 5px;
+  border: 2px solid transparent;
+  padding: 6px 6px;
+  width: 70px;
+  font-size: 14px;
+  font-family: inherit;
+  background-color: #ABEA9A;
+  cursor: pointer;
+}
+
+button:hover {
+  border: 2px solid #1E9A22;
+}
