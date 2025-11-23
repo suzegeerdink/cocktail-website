@@ -10,3 +10,35 @@
 .intro-section h1 {
     font-size: 70px;
 }
+
+main {
+    background: var(--primary-color);
+}
+
+.container-main-content {
+    display: flex;
+    flex-direction: column;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    gap: 20px;
+}
+
+.highlighted-cocktails {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+@media (min-width: 992px) {
+    .container-main-content {
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        margin: 0 20px;
+    }
+
+    .highlighted-cocktails {
+        flex-direction: row;
+        max-width: 900px;
+    }
+}

@@ -1,0 +1,31 @@
+.random-button {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    background: var(--accent-color);
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 0;
+    width: 100%;
+    cursor: pointer;
+}
+
+.crop-box {
+    width: 300px;
+    height: 200px;
+    overflow: hidden;
+}
+
+.crop-box img {
+    width: 100%;
+    object-position: top;
+    object-fit: cover;
+    transform: scale(2);
+    transform-origin: top;
+}
+
+@media (min-width: 992px) {
+
+}

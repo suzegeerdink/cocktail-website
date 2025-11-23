@@ -3,7 +3,10 @@ import './CocktailCatalogPage.css'
 function CocktailCatalogPage() {
     return (
         <>
-            <p>CocktailCatalogPage</p>
+            <section className="intro-section-smaller">
+                <h1>Cocktail Counter</h1>
+            </section>
+            <p>cards</p>
         </>
     )
 }
