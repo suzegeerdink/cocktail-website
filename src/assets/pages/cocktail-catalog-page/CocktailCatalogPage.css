@@ -4,9 +4,77 @@
     justify-content: center;
     align-items: center;
     min-height: 70px;
+    width: 100%;
     background: var(--secondary-color);
 }
 
 .intro-section-smaller h1 {
     font-size: 30px;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    padding-bottom: 15px;
+}
+
+.searchbar {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+.searchbar input {
+    height: 30px;
+}
+
+.container-cocktails {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.items {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--white-color);
+    padding-top: 10px;
+    margin: 10px;
+    gap: 20px;
+    border-radius: 10px 10px 0 0;
+    width: 200px;
+    height: auto;
+}
+
+.items img {
+    width: 200px;
+    height: auto;
+    overflow: hidden;
+}
+
+.items h3 {
+    line-break: normal;
+}
+
+main button {
+    width: 120px;
+}
+
+@media (min-width: 992px) {
+    .container-cocktails {
+        padding: 0 150px;
+    }
+
+    .items {
+        flex-basis: calc(100% / 2);
+        max-width: 200px;
+    }
 }

@@ -1,5 +1,6 @@
 import './Navigation.css';
 import {NavLink} from 'react-router-dom';
+import icon from '/src/assets/cocktail-icon.png';
 
 function Navigation() {
 
@@ -7,7 +8,7 @@ function Navigation() {
         <header>
             <nav>
             <span>
-                <img src="src/assets/cocktail-icon.png" alt="filler-image"/>
+                <img src={icon} alt="filler-image"/>
                 <h3>Cocktail Counter</h3>
             </span>
                 <div className="navbar-elements">
