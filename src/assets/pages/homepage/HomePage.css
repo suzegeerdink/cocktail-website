@@ -11,8 +11,12 @@
     font-size: 70px;
 }
 
-main {
+.main-homepage {
     background: var(--primary-color);
+    display: flex;
+    flex-direction: column;
+    min-height: calc(100vh - 150px);
+
 }
 
 .container-main-content {
@@ -34,7 +38,9 @@ main {
         flex-direction: row;
         justify-content: center;
         align-items: center;
+        flex: 1;
         margin: 0 20px;
+        border: red solid 1px;
     }
 
     .highlighted-cocktails {

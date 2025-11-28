@@ -12,11 +12,12 @@
     font-size: 30px;
 }
 
-main {
+.main-catalog-page {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    background: var(--primary-color);
     gap: 20px;
     padding-bottom: 15px;
 }

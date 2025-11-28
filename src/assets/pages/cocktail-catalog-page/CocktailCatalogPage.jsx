@@ -8,24 +8,25 @@ function CocktailCatalogPage() {
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        (async () => {
+        async function fetchCocktails() {
             const letters = "abcdefghijklmnopqrstuvwxyz".split("");
             const all = [];
 
             try {
                 for (const letter of letters) {
-                    const res = await axios.get(
+                    const response = await axios.get(
                         `https://www.thecocktaildb.com/api/json/v1/1/search.php?f=${letter}`
                     );
-                    if (res.data.drinks) all.push(...res.data.drinks);
+                    if (response.data.drinks) all.push(...response.data.drinks);
                 }
                 setAllCocktails(all);
             } catch (e) {
-                console.error("Axios error:", e);
+                console.error(e);
             } finally {
                 setLoading(false);
             }
-        })();
+        }
+        fetchCocktails();
     }, []);
 
     if (loading) return <p>Loading cocktails...</p>;
@@ -38,11 +39,11 @@ function CocktailCatalogPage() {
 
     return (
         <>
-            <section className="intro-section-smaller">
+            <header className="intro-section-smaller">
                 <h1>Cocktail Counter</h1>
-            </section>
+            </header>
 
-            <main>
+            <main className="main-catalog-page">
 
                 <section className="searchbar">
                     <p>zoek</p>

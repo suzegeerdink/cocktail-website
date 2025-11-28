@@ -5,11 +5,11 @@ import RandomCocktail from "../../components/random-cocktail/RandomCocktail.jsx"
 function HomePage() {
     return (
         <>
-            <main>
-                <section className="intro-section">
+            <div className="main-homepage">
+                <header className="intro-section">
                     <h1>Cocktail Counter</h1>
-                </section>
-                <div className="container-main-content">
+                </header>
+                <main className="container-main-content">
                     <section className="highlighted-cocktails">
                         <HighlightedCocktail/>
                         <HighlightedCocktail/>
@@ -18,8 +18,8 @@ function HomePage() {
                     <section>
                         <RandomCocktail/>
                     </section>
-                </div>
-            </main>
+                </main>
+            </div>
         </>
     )
 }
