@@ -1,22 +1,8 @@
-.intro-section {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    min-height: 200px;
-    background: var(--secondary-color);
-}
-
-.intro-section h1 {
-    font-size: 70px;
-}
-
 .main-homepage {
     background: var(--primary-color);
     display: flex;
     flex-direction: column;
     min-height: calc(100vh - 150px);
-
 }
 
 .container-main-content {
@@ -40,7 +26,6 @@
         align-items: center;
         flex: 1;
         margin: 0 20px;
-        border: red solid 1px;
     }
 
     .highlighted-cocktails {

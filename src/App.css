@@ -8,3 +8,21 @@ main {
   flex-grow: 1;
   background-color: var(--primary-color);
 }
+
+.intro-section {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  min-height: 200px;
+  background: var(--secondary-color);
+}
+
+.intro-section h1 {
+  font-size: 70px;
+}
+
+footer {
+  background-color: var(--secondary-color);
+}

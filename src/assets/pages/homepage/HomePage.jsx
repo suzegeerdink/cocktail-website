@@ -4,7 +4,6 @@ import RandomCocktail from "../../components/random-cocktail/RandomCocktail.jsx"
 
 function HomePage() {
     return (
-        <>
             <div className="main-homepage">
                 <header className="intro-section">
                     <h1>Cocktail Counter</h1>
@@ -20,7 +19,6 @@ function HomePage() {
                     </section>
                 </main>
             </div>
-        </>
     )
 }
 

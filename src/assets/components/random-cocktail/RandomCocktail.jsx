@@ -1,4 +1,5 @@
 import './RandomCocktail.css'
+import cocktailshaker from '/src/assets/cocktail-shaker.png'
 
 function RandomCocktail() {
     return (
@@ -6,7 +7,7 @@ function RandomCocktail() {
             <button className="random-button">
             <h2>Shake Me!</h2>
                 <div className="crop-box">
-            <img src="src/assets/cocktail-shaker.png" alt="filler-image"/>
+            <img src={cocktailshaker} alt="filler-image"/>
                 </div>
             </button>
         </>
