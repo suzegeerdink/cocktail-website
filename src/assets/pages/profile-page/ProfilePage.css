@@ -1,0 +1,132 @@
+.profile-information {
+    display: flex;
+    flex-direction: column;
+    max-width: 1800px;
+    flex-shrink: 1;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 20px 0;
+    gap: 20px;
+    border: 2px solid red;
+
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    box-sizing: border-box;
+}
+
+.profile-information > p {
+    margin: 0;
+    text-align: center;
+    font-size: 30px;
+    background-color: var(--white-color);
+    border-radius: 10px;
+    border: 3px solid orange;
+}
+
+.cocktails-today {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: var(--white-color);
+    border-radius: 10px;
+    border: 3px solid green;
+}
+
+
+.cocktail-list {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    min-width: 0;
+    flex-shrink: 1;
+    box-sizing: border-box;
+    border: 3px solid green;
+}
+
+.span-total {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-basis: 50px;
+    margin: 0;
+    width: 100%;
+    max-width: 450px; /* ★ forces them to take the same width */
+    min-width: 0;
+    flex-shrink: 1;
+    box-sizing: border-box;
+    border: 3px solid green;
+}
+
+.cocktails-today ul {
+    width: 100%;
+    max-width: 450px; /* keeps your current look, but flexible */
+    min-width: 0;
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.favorite-cocktails {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: var(--white-color);
+    border-radius: 10px;
+    border: 3px solid blue;
+}
+
+.profile-information > p,
+.cocktails-today,
+.favorite-cocktails {
+    width: 100%;
+    max-width: 550px;
+    min-width: 0;
+    flex-shrink: 1;
+    padding: 16px;
+    box-sizing: border-box;
+}
+
+.favorite-cocktails ul {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    width: 100%;
+
+}
+
+.favorite-cocktails ul img {
+    display: flex;
+    justify-content: space-between;
+    width: 120px;
+}
+
+.divider-line {
+    width: 100%;
+    border-bottom: 1px solid var(--black-color);
+}
+
+.cocktails-today h2,
+.favorite-cocktails h2 {
+    margin: 0;
+    padding-top: 10px;
+}
+
+
+@media (min-width: 992px) {
+    .profile-information {
+        flex-direction: row;
+        justify-content: center;
+        align-items: flex-start;
+        gap: 20px;
+    }
+
+    .cocktails-today,
+    .favorite-cocktails,
+    .profile-information > p {
+        max-width: 400px;
+        min-width: 350px;
+    }
+
+}

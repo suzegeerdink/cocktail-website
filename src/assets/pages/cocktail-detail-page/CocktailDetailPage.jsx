@@ -7,7 +7,7 @@ function CocktailDetailPage() {
 
     return (
         <>
-            <div className="whole-page-container">
+            <div className="detail-page">
             <header className="intro-section-smaller">
                 <h1>Cocktail Counter</h1>
             </header>
