@@ -3,7 +3,6 @@ import cocktailimage from '/src/assets/bloody-mary.jpg'
 
 function ProfilePage() {
     return (
-        <>
             <div className="profile-page">
                 <header className="intro-section-smaller">
                     <h1>Cocktail Counter</h1>
@@ -26,11 +25,12 @@ function ProfilePage() {
                                 <img src={cocktailimage} alt="filler picture"/>
                                 <img src={cocktailimage} alt="filler picture"/>
                                 <img src={cocktailimage} alt="filler picture"/>
+                                <img src={cocktailimage} alt="filler picture"/>
+                                <img src={cocktailimage} alt="filler picture"/>
                             </ul>
                         </section>
                 </main>
             </div>
-        </>
     )
 }
 

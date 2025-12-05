@@ -45,9 +45,24 @@ function CocktailCatalogPage() {
 
             <main className="main-catalog-page">
 
-                <section className="searchbar">
+                <section className="searchbar-filterbox">
+                    <div className="searchbar">
                     <p>zoek</p>
                     <input type="text" />
+                    </div>
+                    <details>
+                        <summary>
+                            filter
+                        </summary>
+                        <ul>
+                            <li><input type="checkbox" id="glass" name="glass" value="cocktail-glass"/>
+                                <label htmlFor="glass">cocktail glass</label></li>
+                            <li><input type="checkbox" id="non-alcoholic" name="non-alcoholic" value="non-alcoholic"/>
+                                <label htmlFor="non-alcoholic">non-alcoholic</label></li>
+                            <li><input type="checkbox" id="ordinary-drink" name="ordinary-drink" value="ordinary-drink"/>
+                                <label htmlFor="ordinary-drink">ordinary-drink</label></li>
+                        </ul>
+                    </details>
                 </section>
 
                 <section className="container-cocktails">

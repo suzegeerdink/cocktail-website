@@ -4,7 +4,7 @@ import cocktailimage from '/src/assets/bloody-mary.jpg';
 function HighlightedCocktail() {
     return (
         <>
-            <div className="outer-container-hc">
+            <div className="outer-container-highlighted-cocktail">
             <h2>Name Cocktail</h2>
             <img src={cocktailimage} alt="filler-image"/>
             <p>string ingredient 1, string ingredient 2, string ingredient 3</p>

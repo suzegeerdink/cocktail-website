@@ -13,8 +13,7 @@ import Navigation from "./assets/components/navigation/Navigation.jsx";
 function App() {
 
     return (
-        <>
-            <div className="page-container">
+        <div className="page-container">
             <Navigation/>
             <main>
                 <Routes>
@@ -30,8 +29,7 @@ function App() {
             <footer>
                 <p>footer</p>
             </footer>
-                </div>
-        </>
+        </div>
     )
 }
 

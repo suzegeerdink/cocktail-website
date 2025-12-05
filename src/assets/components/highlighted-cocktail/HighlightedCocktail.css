@@ -1,4 +1,4 @@
-.outer-container-hc {
+.outer-container-highlighted-cocktail {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -7,12 +7,10 @@
     gap: 10px;
     padding: 10px;
     background: var(--white-color);
-    max-width: 400px;
-    margin: 0 auto;
     width: 100%;
 }
 
-.outer-container-hc img {
+.outer-container-highlighted-cocktail img {
     height: 150px;
     width: auto;
 }

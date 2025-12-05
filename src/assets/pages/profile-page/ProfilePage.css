@@ -7,8 +7,6 @@
     align-items: center;
     padding: 20px 0;
     gap: 20px;
-    border: 2px solid red;
-
     width: 100%;
     margin-left: auto;
     margin-right: auto;
@@ -21,7 +19,6 @@
     font-size: 30px;
     background-color: var(--white-color);
     border-radius: 10px;
-    border: 3px solid orange;
 }
 
 .cocktails-today {
@@ -30,9 +27,11 @@
     align-items: center;
     background-color: var(--white-color);
     border-radius: 10px;
-    border: 3px solid green;
 }
 
+.cocktails-today > h2 {
+    margin: 0 0 10px 0;
+}
 
 .cocktail-list {
     display: flex;
@@ -40,9 +39,10 @@
     align-items: center;
     width: 100%;
     min-width: 0;
+    height: 50px;
+    border: green solid 1px;
     flex-shrink: 1;
     box-sizing: border-box;
-    border: 3px solid green;
 }
 
 .span-total {
@@ -52,16 +52,15 @@
     flex-basis: 50px;
     margin: 0;
     width: 100%;
-    max-width: 450px; /* ★ forces them to take the same width */
+    max-width: 500px;
     min-width: 0;
     flex-shrink: 1;
     box-sizing: border-box;
-    border: 3px solid green;
 }
 
 .cocktails-today ul {
     width: 100%;
-    max-width: 450px; /* keeps your current look, but flexible */
+    max-width: 500px;
     min-width: 0;
     padding: 0;
     margin: 0;
@@ -74,45 +73,42 @@
     align-items: center;
     background-color: var(--white-color);
     border-radius: 10px;
-    border: 3px solid blue;
+    border: red solid 1px;
+    padding: 16px;
 }
 
 .profile-information > p,
 .cocktails-today,
 .favorite-cocktails {
     width: 100%;
-    max-width: 550px;
+    max-width: 575px;
     min-width: 0;
     flex-shrink: 1;
-    padding: 16px;
     box-sizing: border-box;
+    padding: 10px;
 }
 
 .favorite-cocktails ul {
     display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    width: 100%;
-
+    justify-content: flex-start;
+    max-width: 382px;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin: 0 auto;
+    list-style: none;
+    box-sizing: border-box;
 }
 
 .favorite-cocktails ul img {
-    display: flex;
-    justify-content: space-between;
     width: 120px;
+    height: auto;
+    border-radius: 6px;
 }
 
 .divider-line {
-    width: 100%;
+    width: 90%;
     border-bottom: 1px solid var(--black-color);
 }
-
-.cocktails-today h2,
-.favorite-cocktails h2 {
-    margin: 0;
-    padding-top: 10px;
-}
-
 
 @media (min-width: 992px) {
     .profile-information {
@@ -125,8 +121,11 @@
     .cocktails-today,
     .favorite-cocktails,
     .profile-information > p {
-        max-width: 400px;
-        min-width: 350px;
+        max-width: 475px;
+        padding: 16px;
     }
 
+    .divider-line {
+        width: 100%;
+    }
 }
