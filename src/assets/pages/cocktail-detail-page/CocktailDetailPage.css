@@ -1,0 +1,115 @@
+.detail-page, .outer-container-detailpage, .inner-container-detailpage {
+    display: flex;
+    flex-direction: column;
+}
+
+.detail-page {
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+
+.outer-container-detailpage {
+    align-items: flex-start;
+    background-color: var(--white-color);
+    padding: 10px;
+    max-width: 500px;
+    flex-basis: 300px;
+    border-radius: 10px;
+}
+
+.inner-container-detailpage {
+    align-items: center;
+    gap: 10px;
+}
+
+.title-and-icon {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.star {
+    color: grey;
+}
+
+.cocktailcard-main-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: stretch;
+}
+
+.image-and-recipe {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.cocktailcard-main-content img {
+    width: 350px;
+}
+
+.amount-options, .action-buttons {
+    display: flex;
+    flex-direction: row;
+}
+
+.amount-options {
+    gap: 10px;
+    border: 0;
+}
+
+.action-buttons {
+    justify-content: space-between;
+}
+
+.buttons-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 10px;
+}
+
+@media (min-width: 992px) {
+    .outer-container-detailpage {
+        max-width: 700px;
+        flex-basis: 500px;
+        justify-content: stretch;
+        padding: 20px;
+    }
+
+    .title-and-icon {
+        width: 100%;
+        justify-content: space-between;
+        margin: 0;
+    }
+
+    .cocktailcard-main-content {
+        justify-content: space-between;
+        align-items: stretch;
+        gap: 20px;
+        min-height: 400px;
+    }
+
+    .cocktail-text {
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: flex-start;
+    }
+
+    .image-and-recipe {
+        display: flex;
+        align-items: flex-start;
+        flex-direction: row-reverse;
+        gap: 10px;
+    }
+
+    .cocktailcard-main-content img {
+        width: 350px;
+    }
+}
+
+

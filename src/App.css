@@ -1,36 +1,42 @@
-@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300..700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&display=swap');
-
-
-/* -----------------------------------Global Styles------------------------------------------- */
-
-:root {
-  --primary-color: #92E7F3;
-  --secondary-color: #F3A1B4;
-  --accent-color: #ABEA9A;
-  --white-color: #FFFFFF;
-  --black-color: #000000;
-  --font-body: 'Comfortaa', sans-serif;
-  --font-heading: 'Fredoka', sans-serif;
+.page-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+main {
+  flex-grow: 1;
+  background-color: var(--primary-color);
 }
 
-body {
-  font-family: var(--font-body), sans-serif;
-  color: var(--black-color);
+.intro-section {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  min-height: 200px;
+  background: var(--secondary-color);
 }
-/* -------------------------------------Typography--------------------------------------------- */
 
-h1, h2, h3, h4, h5, h6 {
-  font-family: var(--font-heading), sans-serif;
+.intro-section h1 {
+  font-size: 70px;
 }
 
-p {
-  margin: 20px 0;
-  line-height: 1.5;
+.intro-section-smaller {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  min-height: 70px;
+  width: 100%;
+  background: var(--secondary-color);
+}
+
+.intro-section-smaller h1 {
+  font-size: 30px;
+}
+
+footer {
+  background-color: var(--secondary-color);
 }

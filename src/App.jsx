@@ -7,17 +7,19 @@ import ProfilePage from "./assets/pages/profile-page/ProfilePage.jsx";
 import ErrorPage from "./assets/pages/error-page/ErrorPage.jsx";
 import LoginPage from "./assets/pages/login-page/LoginPage.jsx";
 import RegisterPage from "./assets/pages/register-page/RegisterPage.jsx";
+import Navigation from "./assets/components/navigation/Navigation.jsx";
 
 
 function App() {
 
     return (
-        <>
+        <div className="page-container">
+            <Navigation/>
             <main>
                 <Routes>
                     <Route path="/" element={<HomePage/>}/>
                     <Route path="/cocktail-catalog-page" element={<CocktailCatalogPage/>}/>
-                    <Route path="/cocktail-detail-page/:id" element={<CocktailDetailPage/>}/>
+                    <Route path="/cocktail-detail-page/" element={<CocktailDetailPage/>}/>
                     <Route path="/profile-page" element={<ProfilePage/>}/>
                     <Route path="/register-page" element={<RegisterPage/>}/>
                     <Route path="/login-page" element={<LoginPage/>}/>
@@ -27,7 +29,7 @@ function App() {
             <footer>
                 <p>footer</p>
             </footer>
-        </>
+        </div>
     )
 }
 

@@ -1,0 +1,131 @@
+.profile-information {
+    display: flex;
+    flex-direction: column;
+    max-width: 1800px;
+    flex-shrink: 1;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 20px 0;
+    gap: 20px;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    box-sizing: border-box;
+}
+
+.profile-information > p {
+    margin: 0;
+    text-align: center;
+    font-size: 30px;
+    background-color: var(--white-color);
+    border-radius: 10px;
+}
+
+.cocktails-today {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: var(--white-color);
+    border-radius: 10px;
+}
+
+.cocktails-today > h2 {
+    margin: 0 0 10px 0;
+}
+
+.cocktail-list {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    min-width: 0;
+    height: 50px;
+    border: green solid 1px;
+    flex-shrink: 1;
+    box-sizing: border-box;
+}
+
+.span-total {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-basis: 50px;
+    margin: 0;
+    width: 100%;
+    max-width: 500px;
+    min-width: 0;
+    flex-shrink: 1;
+    box-sizing: border-box;
+}
+
+.cocktails-today ul {
+    width: 100%;
+    max-width: 500px;
+    min-width: 0;
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.favorite-cocktails {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: var(--white-color);
+    border-radius: 10px;
+    border: red solid 1px;
+    padding: 16px;
+}
+
+.profile-information > p,
+.cocktails-today,
+.favorite-cocktails {
+    width: 100%;
+    max-width: 575px;
+    min-width: 0;
+    flex-shrink: 1;
+    box-sizing: border-box;
+    padding: 10px;
+}
+
+.favorite-cocktails ul {
+    display: flex;
+    justify-content: flex-start;
+    max-width: 382px;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin: 0 auto;
+    list-style: none;
+    box-sizing: border-box;
+}
+
+.favorite-cocktails ul img {
+    width: 120px;
+    height: auto;
+    border-radius: 6px;
+}
+
+.divider-line {
+    width: 90%;
+    border-bottom: 1px solid var(--black-color);
+}
+
+@media (min-width: 992px) {
+    .profile-information {
+        flex-direction: row;
+        justify-content: center;
+        align-items: flex-start;
+        gap: 20px;
+    }
+
+    .cocktails-today,
+    .favorite-cocktails,
+    .profile-information > p {
+        max-width: 475px;
+        padding: 16px;
+    }
+
+    .divider-line {
+        width: 100%;
+    }
+}
