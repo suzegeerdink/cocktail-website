@@ -1,11 +1,18 @@
 import './CocktailCatalogPage.css';
 import axios from 'axios';
-import { useState, useEffect } from "react";
+import {useState, useEffect} from "react";
+import {Link} from "react-router-dom";
+import FilterCheckbox from "../../components/FilterCheckbox.jsx";
+import SearchBar from "../../components/SearchBar.jsx";
+import { matchesSearch, matchesGlass, matchesNonAlcoholic, matchesOrdinary } from "../../helpers/cocktailFilters.js";
 
 function CocktailCatalogPage() {
     const [allCocktails, setAllCocktails] = useState([]);
     const [visibleCount, setVisibleCount] = useState(12);
     const [loading, setLoading] = useState(true);
+
+    const [searchCocktail, setSearchCocktail] = useState("");
+    const [filters, setFilters] = useState({glass: false, nonAlcoholic: false, ordinaryDrink: false});
 
     useEffect(() => {
         async function fetchCocktails() {
@@ -26,13 +33,20 @@ function CocktailCatalogPage() {
                 setLoading(false);
             }
         }
+
         fetchCocktails();
     }, []);
 
     if (loading) return <p>Loading cocktails...</p>;
 
-    const shown = allCocktails.slice(0, visibleCount);
+    const filtered = allCocktails.filter(drink =>
+        matchesSearch(drink, searchCocktail) &&
+        matchesGlass(drink, filters) &&
+        matchesNonAlcoholic(drink, filters) &&
+        matchesOrdinary(drink, filters)
+    );
 
+    const shown = filtered.slice(0, visibleCount);
     const loadMore = () => {
         setVisibleCount(c => c + 12);
     };
@@ -46,31 +60,47 @@ function CocktailCatalogPage() {
             <main className="main-catalog-page">
 
                 <section className="searchbar-filterbox">
-                    <div className="searchbar">
-                    <p>zoek</p>
-                    <input type="text" />
-                    </div>
+                    <SearchBar
+                        value={searchCocktail}
+                        onChange={(e) => setSearchCocktail(e.target.value)}
+                    />
                     <details>
                         <summary>
                             filter
                         </summary>
                         <ul>
-                            <li><input type="checkbox" id="glass" name="glass" value="cocktail-glass"/>
-                                <label htmlFor="glass">cocktail glass</label></li>
-                            <li><input type="checkbox" id="non-alcoholic" name="non-alcoholic" value="non-alcoholic"/>
-                                <label htmlFor="non-alcoholic">non-alcoholic</label></li>
-                            <li><input type="checkbox" id="ordinary-drink" name="ordinary-drink" value="ordinary-drink"/>
-                                <label htmlFor="ordinary-drink">ordinary-drink</label></li>
+                            <FilterCheckbox
+                                id="glass"
+                                label="cocktail glass"
+                                checked={filters.glass}
+                                onChange={() => setFilters({ ...filters, glass: !filters.glass })}
+                            />
+                            <FilterCheckbox
+                                id="non-alcoholic"
+                                label="non-alcoholic"
+                                checked={filters.nonAlcoholic}
+                                onChange={() => setFilters({ ...filters, nonAlcoholic: !filters.nonAlcoholic })}
+                            />
+                            <FilterCheckbox
+                                id="ordinary-drink"
+                                label="ordinary-drink"
+                                checked={filters.ordinaryDrink}
+                                onChange={() => setFilters({ ...filters, ordinaryDrink: !filters.ordinaryDrink })}
+                            />
                         </ul>
                     </details>
                 </section>
 
                 <section className="container-cocktails">
                     {shown.map((drink) => (
-                        <div className="items" key={drink.idDrink}>
+                        <Link
+                            to={`/cocktail-detail-page/${drink.idDrink}`}
+                            key={drink.idDrink}
+                            className="items"
+                        >
                             <h3>{drink.strDrink}</h3>
-                            <img src={drink.strDrinkThumb} alt={drink.strDrink} />
-                        </div>
+                            <img src={drink.strDrinkThumb} alt={drink.strDrink}/>
+                        </Link>
                     ))}
                 </section>
 

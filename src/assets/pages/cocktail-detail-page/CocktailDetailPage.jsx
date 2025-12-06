@@ -1,8 +1,40 @@
-import './CocktailDetailPage.css'
-import cocktailimage from '/src/assets/bloody-mary.jpg';
-
+import './CocktailDetailPage.css';
+import { useParams, useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
 
 function CocktailDetailPage() {
+    const { id } = useParams();
+    const navigate = useNavigate();
+    const [cocktail, setCocktail] = useState(null);
+    const [loading, setLoading] = useState(true);
+    const [totalAmount, setTotalAmount] = useState(0);
+
+    useEffect(() => {
+        const fetchCocktail = async () => {
+            try {
+                const response = await fetch(`https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${id}`);
+                const data = await response.json();
+                setCocktail(data.drinks[0]);
+            } catch (error) {
+                console.error("Error fetching cocktail:", error);
+            } finally {
+                setLoading(false);
+            }
+        };
+
+        fetchCocktail();
+    }, [id]);
+
+    if (loading) return <p>Loading...</p>;
+    if (!cocktail) return <p>Cocktail not found</p>;
+
+    const ingredients = [];
+    for (let i = 1; i <= 15; i++) {
+        const ingredient = cocktail[`strIngredient${i}`];
+        if (ingredient) {
+            ingredients.push(ingredient);
+        }
+    }
 
     return (
         <div className="detail-page">
@@ -12,36 +44,41 @@ function CocktailDetailPage() {
             <main className="outer-container-detailpage">
                 <article className="inner-container-detailpage">
                     <div className="title-and-icon">
-                        <h2>Moscow Mule</h2>
+                        <h2>{cocktail.strDrink}</h2>
                         <button className="star-button">★</button>
                     </div>
                     <section className="cocktailcard-main-content">
                         <div className="image-and-recipe">
-                        <img src={cocktailimage} alt="filler-image"/>
-                        <section className="cocktail-text">
-                            <p><strong>Ingredients:</strong> vodka, ginger beer and fresh lime juice</p>
-                            <p><strong>Recipe:</strong> Combine vodka and ginger beer in a highball glass filled
-                                with ice. Add lime juice. Stir gently. Garnish.</p>
-                            <p><strong>Glass:</strong> Copper mug</p>
-                        </section>
+                            <img src={cocktail.strDrinkThumb} alt={cocktail.strDrink}/>
+                            <section className="cocktail-text">
+                                <p><strong>Ingredients:</strong> {ingredients.join(', ')}</p>
+                                <p><strong>Recipe:</strong> {cocktail.strInstructions}</p>
+                                <p><strong>Glass:</strong> {cocktail.strGlass}</p>
+                            </section>
                         </div>
                         <div className="buttons-card">
-                            <fieldset className="amount-options">
-                                <input type="checkbox" id="strMeasure1" name="strMeasure1" value="amount"/>
-                                <label htmlFor="strMeasure1">strMeasure1</label>
-                                <input type="checkbox" id="strMeasure2" name="strMeasure2" value="amount"/>
-                                <label htmlFor="strMeasure2">strMeasure2</label>
-                            </fieldset>
+                            <div className="amount-options">
+                                <label htmlFor="totalAmount"><strong>Enter your amount in ML :</strong></label>
+                                <input
+                                    type="number"
+                                    id="totalAmount"
+                                    name="totalAmount"
+                                    placeholder="200"
+                                    min="0"
+                                    value={totalAmount}
+                                    onChange={(e) => setTotalAmount(e.target.value)}
+                                />
+                            </div>
                             <div className="action-buttons">
                                 <button>add to list</button>
-                                <button>back</button>
+                                <button onClick={() => navigate(-1)}>back</button>
                             </div>
                         </div>
                     </section>
                 </article>
             </main>
         </div>
-    )
+    );
 }
 
-export default CocktailDetailPage
+export default CocktailDetailPage;

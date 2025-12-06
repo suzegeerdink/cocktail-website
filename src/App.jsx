@@ -19,7 +19,7 @@ function App() {
                 <Routes>
                     <Route path="/" element={<HomePage/>}/>
                     <Route path="/cocktail-catalog-page" element={<CocktailCatalogPage/>}/>
-                    <Route path="/cocktail-detail-page/" element={<CocktailDetailPage/>}/>
+                    <Route path="/cocktail-detail-page/:id" element={<CocktailDetailPage/>}/>
                     <Route path="/profile-page" element={<ProfilePage/>}/>
                     <Route path="/register-page" element={<RegisterPage/>}/>
                     <Route path="/login-page" element={<LoginPage/>}/>

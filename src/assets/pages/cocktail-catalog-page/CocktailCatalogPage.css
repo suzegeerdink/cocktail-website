@@ -11,7 +11,7 @@
 
 .searchbar-filterbox {
     display: flex;
-    flex-direction: column; /* stacked on mobile */
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     gap: 10px;
@@ -47,6 +47,8 @@
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
+    text-decoration: none;
+    color: var(--black-color);
     background-color: var(--white-color);
     padding-top: 10px;
     margin: 10px;
@@ -54,6 +56,10 @@
     border-radius: 10px 10px 0 0;
     width: 180px;
     height: auto;
+}
+
+.items:hover {
+    background-color: #1E9A22;
 }
 
 .items img {
