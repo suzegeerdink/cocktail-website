@@ -1,7 +1,7 @@
 .outer-container-highlighted-cocktail {
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
     border-radius: 10px;
     gap: 10px;
@@ -13,4 +13,11 @@
 .outer-container-highlighted-cocktail img {
     height: 150px;
     width: auto;
+}
+
+@media (min-width: 992px) {
+    .outer-container-highlighted-cocktail {
+        width: 400px;
+    }
+
 }
