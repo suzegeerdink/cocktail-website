@@ -21,13 +21,11 @@ function HomePage() {
                         cocktailList.push(result.data.drinks[0]);
                     }
                 }
-
                 setDrinks(cocktailList);
             } catch (e) {
                 console.error(e);
             }
         }
-
         fetchHighlighted();
     }, []);
 

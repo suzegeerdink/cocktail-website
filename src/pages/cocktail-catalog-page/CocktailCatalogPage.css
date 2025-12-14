@@ -30,11 +30,6 @@
     width: 500px;
 }
 
-.searchbar input {
-    height: 30px;
-    width: 100%;
-}
-
 .container-cocktails {
     display: flex;
     flex-direction: row;

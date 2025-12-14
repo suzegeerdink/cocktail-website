@@ -3,12 +3,12 @@ import axios from 'axios';
 import {useState, useEffect} from "react";
 import {Link} from "react-router-dom";
 import FilterCheckbox from "../../components/FilterCheckbox.jsx";
-import SearchBar from "../../components/SearchBar.jsx";
+import SearchBar from "../../components/searchbar/SearchBar.jsx";
 import { matchesSearch, matchesGlass, matchesNonAlcoholic, matchesOrdinary } from "../../helpers/cocktailFilters.js";
 
 function CocktailCatalogPage() {
     const [allCocktails, setAllCocktails] = useState([]);
-    const [visibleCount, setVisibleCount] = useState(12);
+    const [visibleCount, setVisibleCount] = useState(24);
     const [loading, setLoading] = useState(true);
 
     const [searchCocktail, setSearchCocktail] = useState("");
@@ -48,7 +48,7 @@ function CocktailCatalogPage() {
 
     const shown = filtered.slice(0, visibleCount);
     const loadMore = () => {
-        setVisibleCount(c => c + 12);
+        setVisibleCount(c => c + 24);
     };
 
     return (
