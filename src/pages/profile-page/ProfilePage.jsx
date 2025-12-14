@@ -1,7 +1,14 @@
 import './ProfilePage.css'
 import cocktailimage from '/src/assets/bloody-mary.jpg'
+import { calculateTotalAmount } from "../../helpers/totalAmountCocktails.js";
+import { useContext } from "react";
+import { CocktailContext } from "../../context/CocktailContext.jsx";
 
 function ProfilePage() {
+    const { todaysCocktails, removeCocktail } = useContext(CocktailContext);
+
+    const totalAmount = calculateTotalAmount(todaysCocktails);
+
     return (
             <div className="profile-page">
                 <header className="intro-section-smaller">
@@ -12,12 +19,18 @@ function ProfilePage() {
                         <section className="cocktails-today">
                             <h2>Cocktails today</h2>
                             <ul>
-                                <li className="cocktail-list"> <p>Margaritha</p><p>200 ML</p> </li>
-                                <li className="cocktail-list"> <p>Margaritha</p><p>200 ML</p> </li>
-                                <li className="cocktail-list"> <p>Margaritha</p><p>200 ML</p> </li>
+                                {todaysCocktails.map((c, i) => (
+                                    <li key={i} className="cocktail-list">
+                                        <button onClick={() => removeCocktail(i)} className="delete-button">
+                                            ✕
+                                        </button>
+                                        <p>{c.name}</p>
+                                        <p>{c.amount} ML</p>
+                                    </li>
+                                ))}
                             </ul>
                             <p className="divider-line"></p>
-                            <span className="span-total"><strong>Total:</strong><strong>600 ML</strong></span>
+                            <span className="span-total"><strong>Total:</strong><strong>{totalAmount} ML</strong></span>
                         </section>
                         <section className="favorite-cocktails">
                             <h2>Favorite cocktails</h2>

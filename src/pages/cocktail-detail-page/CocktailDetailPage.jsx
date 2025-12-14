@@ -1,13 +1,17 @@
 import './CocktailDetailPage.css';
-import { useParams, useNavigate } from "react-router-dom";
-import { useEffect, useState } from "react";
+import {useParams, useNavigate} from "react-router-dom";
+import {useEffect, useState} from "react";
+import {useContext} from "react";
+import {CocktailContext} from "../../context/CocktailContext.jsx";
 
 function CocktailDetailPage() {
-    const { id } = useParams();
+    const {id} = useParams();
     const navigate = useNavigate();
     const [cocktail, setCocktail] = useState(null);
     const [loading, setLoading] = useState(true);
     const [totalAmount, setTotalAmount] = useState(0);
+
+    const {addCocktail} = useContext(CocktailContext);
 
     useEffect(() => {
         const fetchCocktail = async () => {
@@ -35,6 +39,14 @@ function CocktailDetailPage() {
             ingredients.push(ingredient);
         }
     }
+
+    const handleAdd = () => {
+        addCocktail(
+            {id: cocktail.idDrink, name: cocktail.strDrink},
+            totalAmount
+        );
+        navigate("/profile-page");
+    };
 
     return (
         <div className="detail-page">
@@ -70,7 +82,7 @@ function CocktailDetailPage() {
                                 />
                             </div>
                             <div className="action-buttons">
-                                <button>add to list</button>
+                                <button onClick={handleAdd}>add to list</button>
                                 <button onClick={() => navigate(-1)}>back</button>
                             </div>
                         </div>
