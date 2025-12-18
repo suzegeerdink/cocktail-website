@@ -1,13 +1,14 @@
 import './ProfilePage.css'
-import cocktailimage from '/src/assets/bloody-mary.jpg'
 import { calculateTotalAmount } from "../../helpers/totalAmountCocktails.js";
 import { useContext } from "react";
 import { CocktailContext } from "../../context/CocktailContext.jsx";
+import { FavoriteContext } from "../../context/FavoriteContext";
 
 function ProfilePage() {
     const { todaysCocktails, removeCocktail } = useContext(CocktailContext);
-
     const totalAmount = calculateTotalAmount(todaysCocktails);
+
+    const { favoriteCocktails, removeFavorite } = useContext(FavoriteContext);
 
     return (
             <div className="profile-page">
@@ -34,12 +35,18 @@ function ProfilePage() {
                         </section>
                         <section className="favorite-cocktails">
                             <h2>Favorite cocktails</h2>
-                            <ul>
-                                <img src={cocktailimage} alt="filler picture"/>
-                                <img src={cocktailimage} alt="filler picture"/>
-                                <img src={cocktailimage} alt="filler picture"/>
-                                <img src={cocktailimage} alt="filler picture"/>
-                                <img src={cocktailimage} alt="filler picture"/>
+                            <ul className="favorite-list">
+                                {favoriteCocktails.length === 0 && <p>No favorite cocktails yet.</p>}
+                                {favoriteCocktails.map((cocktail) => (
+                                    <li key={cocktail.idDrink}>
+                                        <img src={cocktail.strDrinkThumb} alt={cocktail.strDrink} />
+                                        <p>{cocktail.strDrink}</p>
+                                        <button
+                                            onClick={() => removeFavorite(cocktail.idDrink)}
+                                            className="remove-button"> Remove
+                                        </button>
+                                    </li>
+                                ))}
                             </ul>
                         </section>
                 </main>

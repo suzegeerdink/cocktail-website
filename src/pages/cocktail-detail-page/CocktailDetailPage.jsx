@@ -3,6 +3,8 @@ import {useParams, useNavigate} from "react-router-dom";
 import {useEffect, useState} from "react";
 import {useContext} from "react";
 import {CocktailContext} from "../../context/CocktailContext.jsx";
+import { FavoriteContext } from "../../context/FavoriteContext";
+import {isCocktailFavorite} from "../../helpers/favoriteCocktail.js";
 
 function CocktailDetailPage() {
     const {id} = useParams();
@@ -12,6 +14,8 @@ function CocktailDetailPage() {
     const [totalAmount, setTotalAmount] = useState(0);
 
     const {addCocktail} = useContext(CocktailContext);
+    const { addFavorite, favoriteCocktails, removeFavorite } = useContext(FavoriteContext);
+    const isFavorite = cocktail ? isCocktailFavorite(favoriteCocktails, cocktail) : false;
 
     useEffect(() => {
         const fetchCocktail = async () => {
@@ -57,7 +61,15 @@ function CocktailDetailPage() {
                 <article className="inner-container-detailpage">
                     <div className="title-and-icon">
                         <h2>{cocktail.strDrink}</h2>
-                        <button className="star-button">★</button>
+                        <button
+                            className="star-button"
+                            onClick={() => {
+                                if (isFavorite) removeFavorite(cocktail.idDrink);
+                                else addFavorite(cocktail);
+                            }}
+                        >
+                            {isFavorite ? "★" : "☆"}
+                        </button>
                     </div>
                     <section className="cocktailcard-main-content">
                         <div className="image-and-recipe">
