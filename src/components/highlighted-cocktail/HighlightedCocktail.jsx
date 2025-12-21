@@ -1,4 +1,5 @@
 import './HighlightedCocktail.css'
+import {Link} from "react-router-dom";
 
 function HighlightedCocktail({ drink }) {
     function getIngredients(drink) {
@@ -23,7 +24,7 @@ function HighlightedCocktail({ drink }) {
             />
 
             <p>{ingredients.join(", ")}</p>
-            <button>meer</button>
+            <Link to={`/cocktail-detail-page/${drink.idDrink}`} className="button-link">meer</Link>
         </div>
     )
 }
