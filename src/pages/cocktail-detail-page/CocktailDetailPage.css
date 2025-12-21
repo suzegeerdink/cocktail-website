@@ -66,11 +66,22 @@
     justify-content: space-between;
 }
 
+.input-error {
+    color: red;
+    font-size: 13px;
+    margin-top: 4px;
+}
+
 .buttons-card {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     gap: 10px;
+}
+
+button:disabled {
+    background-color: #d4f0d3;
+    border-color: #a0d090;
 }
 
 @media (min-width: 992px) {

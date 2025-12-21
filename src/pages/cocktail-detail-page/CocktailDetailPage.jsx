@@ -13,6 +13,8 @@ function CocktailDetailPage() {
     const [loading, setLoading] = useState(true);
     const [totalAmount, setTotalAmount] = useState(0);
 
+    const [error, setError] = useState("");
+
     const { addCocktail } = useContext(CocktailContext);
     const { addFavorite, favoriteCocktails, removeFavorite } = useContext(FavoriteContext);
     const isFavorite = cocktail ? isCocktailFavorite(favoriteCocktails, cocktail) : false;
@@ -42,7 +44,10 @@ function CocktailDetailPage() {
     }
 
     const handleAdd = () => {
-        if (!totalAmount || totalAmount <= 0) return alert("Voer een hoeveelheid in ML in!");
+        if (!totalAmount || totalAmount <= 0 || isNaN(totalAmount)) {
+            setError("Voer een geldige hoeveelheid in ML in!");
+            return;
+        }
 
         const amountOz = mlToOz(totalAmount);
         addCocktail({
@@ -52,6 +57,7 @@ function CocktailDetailPage() {
             strAlcoholic: cocktail.strAlcoholic,
         });
 
+        setError("");
         navigate("/profile-page");
     };
 
@@ -98,8 +104,9 @@ function CocktailDetailPage() {
                                     onChange={(e) => setTotalAmount(Number(e.target.value))}
                                 />
                             </div>
+                            {error && <p className="input-error">{error}</p>}
                             <div className="action-buttons">
-                                <button onClick={handleAdd}>add to list</button>
+                                <button onClick={handleAdd} disabled={!totalAmount || totalAmount <= 0 || isNaN(totalAmount)}>add to list</button>
                                 <button onClick={() => navigate(-1)}>back</button>
                             </div>
                         </div>
