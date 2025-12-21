@@ -5,10 +5,10 @@ export const CocktailContext = createContext();
 export function CocktailProvider( { children } ) {
     const [todaysCocktails, setTodaysCocktails] = useState( [] );
 
-    const addCocktail = (cocktail, amount) => {
+    const addCocktail = (cocktail) => {
         setTodaysCocktails((previousCocktails) => {
             const updatedCocktails = [...previousCocktails];
-            updatedCocktails.push({ ...cocktail, amount });
+            updatedCocktails.push({ ...cocktail });
             return updatedCocktails;
         });
     };
