@@ -4,10 +4,12 @@ import { CocktailContext } from "../../context/CocktailContext.jsx";
 import { FavoriteContext } from "../../context/FavoriteContext";
 import { ozToMl } from "../../helpers/helperUnits.js";
 import {isAlcoholicCocktail} from "../../helpers/isCocktailAlcoholic.js";
+import { UserContext } from "../../context/UserContext";
 
 function ProfilePage() {
     const { todaysCocktails, removeCocktail } = useContext(CocktailContext);
     const { favoriteCocktails, removeFavorite } = useContext(FavoriteContext);
+    const { user, logout } = useContext(UserContext);
 
     //Amount of ML for only the alcoholic cocktails
     const totalAlcoholMl = todaysCocktails.reduce(

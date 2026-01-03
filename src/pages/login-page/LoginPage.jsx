@@ -1,19 +1,78 @@
 import './LoginPage.css'
+import {useContext, useState} from "react";
+import {useNavigate} from "react-router-dom";
+import axios from "axios";
+import { UserContext } from "../../context/UserContext";
 
 function LoginPage() {
+    const navigate = useNavigate();
+    const { login } = useContext(UserContext);
+
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+    const [error, setError] = useState("");
+
+    async function handleLogin(e) {
+        e.preventDefault();
+        setError("");
+
+        try {
+            const response = await axios.post(
+                "/api/login",
+                {
+                    email,
+                    password,
+                },
+                {
+                    headers: {
+                        "Content-Type": "application/json",
+                        'novi-education-project-id': import.meta.env.VITE_API_KEY,
+                    },
+                }
+            );
+
+            const { token, user } = response.data;
+
+            login(token, user);
+
+            navigate("/profile-page");
+        } catch (err) {
+            setError("Inloggen mislukt. Controleer je gegevens.");
+        }
+    }
+
     return (
         <div className="login-page">
             <header className="intro-section">
                 <h1>Cocktail Counter</h1>
             </header>
             <main>
-                <form className="login-form">
+                <form onSubmit={handleLogin} className="login-form">
                     <p>Inloggen</p>
                     <section className="login-details">
-                        <span><label htmlFor="email">email:</label><input placeholder="type email" type="text" id="email" name="email"/></span>
-                        <span><label htmlFor="password">password:</label><input placeholder="type password" type="text" id="password" name="password"/></span>
+                        <span>
+                            <label>email:</label>
+                            <input placeholder="type email"
+                                   type="text"
+                                   id="email"
+                                   name="email"
+                                   onChange={(e) => setEmail(e.target.value)}
+                                   required/>
+                        </span>
+                        <span>
+                            <label>password:</label>
+                            <input placeholder="type password"
+                                   type="password"
+                                   id="password"
+                                   name="password"
+                                   onChange={(e) => setPassword(e.target.value)}
+                                   required/>
+                        </span>
                     </section>
-                    <button>Inloggen</button>
+
+                    {error && <p className="error">{error}</p>}
+
+                    <button type="submit">Login</button>
                 </form>
             </main>
         </div>
