@@ -12,6 +12,14 @@ function LoginPage() {
     const [password, setPassword] = useState("");
     const [error, setError] = useState("");
 
+    const [passwordTouched, setPasswordTouched] = useState(false);
+
+    function isValidPassword(password) {
+        return password.length >= 8 && /\d/.test(password);
+    }
+
+    const passwordIsValid = isValidPassword(password);
+
     async function handleLogin(e) {
         e.preventDefault();
         setError("");
@@ -48,7 +56,7 @@ function LoginPage() {
             </header>
             <main>
                 <form onSubmit={handleLogin} className="login-form">
-                    <p>Inloggen</p>
+                    <p className="form-title">Inloggen</p>
                     <section className="login-details">
                         <span>
                             <label>email:</label>
@@ -65,9 +73,30 @@ function LoginPage() {
                                    type="password"
                                    id="password"
                                    name="password"
-                                   onChange={(e) => setPassword(e.target.value)}
+                                   onChange={(e) => {
+                                       setPassword(e.target.value);
+                                       setPasswordTouched(true);
+                                   }}
+                                   className={
+                                       passwordTouched && !passwordIsValid && password.length > 0 ? "invalid" : ""
+                                   }
                                    required/>
                         </span>
+                        <p
+                            className={`error ${
+                                password.length === 0
+                                    ? "valid"
+                                    : passwordTouched && !passwordIsValid
+                                        ? "invalid"
+                                        : ""
+                            }`}
+                        >
+                            {password.length === 0
+                                ? "Please enter a valid password."
+                                : passwordTouched && !passwordIsValid
+                                    ? "At least 8 characters and 1 digit."
+                                    : ""}
+                        </p>
                     </section>
 
                     {error && <p className="error">{error}</p>}

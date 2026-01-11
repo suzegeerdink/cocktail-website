@@ -51,3 +51,26 @@ button {
 button:hover {
     border: 2px solid #1E9A22;
 }
+
+
+/* ---------------------------------------Input fields--------------------------------------------- */
+
+.login-form input:focus,
+.register-form input:focus {
+    border: 2px solid #1E9A22;
+    outline: none;
+}
+
+.register-form input.invalid,
+.register-form input.invalid:focus {
+    border: 2px solid red;
+    outline: none;
+    background-color: pink;
+}
+
+.login-form input.invalid,
+.login-form input.invalid:focus {
+    background-color: pink;
+    border: 2px solid red;
+    outline: none;
+}

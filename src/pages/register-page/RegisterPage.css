@@ -11,14 +11,14 @@
     flex-direction: column;
     justify-content: stretch;
     align-items: center;
-    min-height: 350px;
+    min-height: 300px;
     width: 550px;
     border-radius: 10px;
     gap: 30px;
     background-color: var(--white-color);
 }
 
-.register-form p {
+.register-form .form-title {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -30,8 +30,9 @@
     flex-direction: column;
     justify-content: flex-start;
     width: 500px;
-    max-height: 150px;
+    max-height: 100px;
 }
+
 
 .register-form input {
     background-color: #D9D9D9;
@@ -44,14 +45,31 @@
     color: #757575;
 }
 
-input:focus {
-    border: #1E9A22 solid 2px;
-    outline: none;
-    color: #1E9A22;
-}
 
 .register-form button {
     display: flex;
     flex-direction: column;
     justify-content: center;
+}
+
+
+.register-form input.invalid {
+    background-color: pink;
+}
+
+.register-form .register-details .error {
+    font-size: 12px;
+    margin: 2px 0 0 130px;
+    line-height: 14px;
+    min-height: 4px;
+    color: red;
+    text-align: left;
+}
+
+.register-form .error.invalid {
+    color: red;
+}
+
+.register-form .error.valid {
+    color: #1E9A22;
 }

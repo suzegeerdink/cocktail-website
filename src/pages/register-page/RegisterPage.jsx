@@ -3,16 +3,29 @@ import {useState} from "react";
 import {useNavigate} from "react-router-dom";
 import axios from "axios";
 
+function isValidPassword(password) {
+    return password.length >= 8 && /\d/.test(password);
+}
+
 function RegisterPage() {
     const navigate = useNavigate();
 
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const [passwordTouched, setPasswordTouched] = useState(false);
     const [error, setError] = useState("");
+
+    const passwordIsValid = isValidPassword(password);
+
 
     async function handleRegister(e) {
         e.preventDefault();
         setError("");
+
+        if (!passwordIsValid) {
+            setError("Wachtwoord moet minimaal 8 tekens bevatten en 1 cijfer.");
+            return;
+        }
 
         try {
             const response = await axios.post("/api/users", {email, password, roles: ["user"]},
@@ -27,8 +40,8 @@ function RegisterPage() {
             const {token, user} = response.data;
             localStorage.setItem("token", token);
             localStorage.setItem("user", JSON.stringify(user));
-
             navigate("/login-page");
+
         } catch (error) {
             setError("Registratie mislukt. Controleer je gegevens.");
             console.log(error);
@@ -42,7 +55,7 @@ function RegisterPage() {
             </header>
             <main>
                 <form className="register-form" onSubmit={handleRegister}>
-                    <p>Register</p>
+                    <p className="form-title">Register</p>
                     <section className="register-details">
 
                         <span><label htmlFor="email">email:</label>
@@ -59,8 +72,29 @@ function RegisterPage() {
                                    id="password"
                                    name="password"
                                    value={password}
-                                   onChange={e => setPassword(e.target.value)}
+                                   onChange={e => {
+                                       setPassword(e.target.value);
+                                       setPasswordTouched(true);
+                                   }}
+                                   className={
+                                       passwordTouched && !passwordIsValid && password.length > 0 ? "invalid" : ""
+                                   }
                                    required/></span>
+                        <p
+                            className={`error ${
+                                password.length === 0
+                                    ? "valid"
+                                    : passwordTouched && !passwordIsValid
+                                        ? "invalid"
+                                        : ""
+                            }`}
+                        >
+                            {password.length === 0
+                                ? "Please, enter a valid password."
+                                : passwordTouched && !passwordIsValid
+                                    ? "At least 8 characters and 1 digit."
+                                    : ""}
+                        </p>
                     </section>
                     {error && <p className="error">{error}</p>}
                     <button type="submit">Register</button>
