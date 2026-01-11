@@ -64,7 +64,12 @@
 }
 
 .items h3 {
-    line-break: normal;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-align: center;
+    width: 100%;
+    padding: 0 8px;
 }
 
 main button {
