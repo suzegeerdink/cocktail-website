@@ -40,3 +40,7 @@ main {
 footer {
   background-color: var(--secondary-color);
 }
+
+footer p {
+  text-align: center;
+}

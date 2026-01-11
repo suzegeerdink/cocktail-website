@@ -42,9 +42,11 @@ span img {
     list-style: none;
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: flex-end;
+    gap: 10px;
     align-items: center;
     flex-basis: 150px;
+    margin-left: auto;
 }
 
 nav ul a, nav ul a:visited {
@@ -67,6 +69,11 @@ nav ul a, nav ul a:visited {
 
 .default-button {
     background-color: var(--accent-color)
+}
+
+.logout-button {
+    background-color: #f44336;
+    color: white;
 }
 
 @media (min-width: 992px) {

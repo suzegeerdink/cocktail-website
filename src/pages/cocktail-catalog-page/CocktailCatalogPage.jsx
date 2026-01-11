@@ -106,7 +106,7 @@ function CocktailCatalogPage() {
 
                 {visibleCount < allCocktails.length && (
                     <button onClick={loadMore}>
-                        Load 12 more
+                        Load 24 more
                     </button>
                 )}
 

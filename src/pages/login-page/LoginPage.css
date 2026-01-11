@@ -18,7 +18,7 @@
     background-color: var(--white-color);
 }
 
-.login-form p {
+.login-form .form-title {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -44,14 +44,28 @@
     color: #757575;
 }
 
-input:focus {
-    border: #1E9A22 solid 2px;
-    outline: none;
-    color: #1E9A22;
-}
-
 .login-form button {
     display: flex;
     flex-direction: column;
     justify-content: center;
+}
+
+.login-form input.invalid {
+    background-color: pink;
+}
+
+.login-form .login-details .error {
+    font-size: 12px;
+    margin: 2px 0 0 130px;
+    line-height: 14px;
+    min-height: 4px;
+    text-align: left;
+}
+
+.login-form .error.invalid {
+    color: red;
+}
+
+.login-form .error.valid {
+    color: #1E9A22;
 }

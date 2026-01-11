@@ -4,10 +4,14 @@ import { CocktailContext } from "../../context/CocktailContext.jsx";
 import { FavoriteContext } from "../../context/FavoriteContext";
 import { ozToMl } from "../../helpers/helperUnits.js";
 import {isAlcoholicCocktail} from "../../helpers/isCocktailAlcoholic.js";
+import { UserContext } from "../../context/UserContext";
 
 function ProfilePage() {
     const { todaysCocktails, removeCocktail } = useContext(CocktailContext);
     const { favoriteCocktails, removeFavorite } = useContext(FavoriteContext);
+    const { user, logout } = useContext(UserContext);
+
+    const displayName = user?.email?.split("@")[0];
 
     //Amount of ML for only the alcoholic cocktails
     const totalAlcoholMl = todaysCocktails.reduce(
@@ -39,7 +43,7 @@ function ProfilePage() {
 
             <main className="profile-information">
                 <p>
-                    Hi [name], you drank <strong>{todaysCocktails.length} cocktails</strong> ({Math.round(totalMl)} ML total),
+                    Hi {displayName}, you drank <strong>{todaysCocktails.length} cocktails</strong> ({Math.round(totalMl)} ML total),
                     so drink about <strong>{waterGlasses} glasses of water</strong> ({Math.round(waterMl)} ML) to stay hydrated!
                 </p>
                 <section className="cocktails-today">
