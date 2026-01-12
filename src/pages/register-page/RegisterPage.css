@@ -16,6 +16,7 @@
     border-radius: 10px;
     gap: 30px;
     background-color: var(--white-color);
+    padding-bottom: 20px;
 }
 
 .register-form .form-title {
@@ -72,4 +73,15 @@
 
 .register-form .error.valid {
     color: #1E9A22;
+}
+
+.button-row {
+    display: flex;
+    gap: 12px;
+}
+
+.register-error {
+    font-size: 12px;
+    margin: 2px 0 0 12px;
+    color: red;
 }

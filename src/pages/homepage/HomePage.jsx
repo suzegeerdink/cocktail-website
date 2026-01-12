@@ -34,15 +34,24 @@ function HomePage() {
                 <header className="intro-section">
                     <h1>Cocktail Counter</h1>
                 </header>
+
                 <main className="container-main-content">
-                    <section className="highlighted-cocktails">
-                        {drinks.map((drink) => (
-                            <HighlightedCocktail key={drink.idDrink} drink={drink} />
-                        ))}
+
+                    <section className="highlighted-section">
+                        <p className="highlighted-title">Highlighted Cocktails</p>
+
+                        <div className="highlighted-cocktails">
+                            {drinks.map((drink) => (
+                                <HighlightedCocktail key={drink.idDrink} drink={drink} />
+                            ))}
+                        </div>
                     </section>
-                    <section>
-                        <RandomCocktail/>
+
+                    <section className="random-cocktail-wrapper">
+                        <p className="random-title">Random Cocktail</p>
+                        <RandomCocktail />
                     </section>
+
                 </main>
             </div>
     )

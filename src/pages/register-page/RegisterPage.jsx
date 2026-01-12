@@ -2,10 +2,8 @@ import './RegisterPage.css'
 import {useState} from "react";
 import {useNavigate} from "react-router-dom";
 import axios from "axios";
+import {isValidPassword} from "../../helpers/isValidPassword.js";
 
-function isValidPassword(password) {
-    return password.length >= 8 && /\d/.test(password);
-}
 
 function RegisterPage() {
     const navigate = useNavigate();
@@ -96,8 +94,15 @@ function RegisterPage() {
                                     : ""}
                         </p>
                     </section>
-                    {error && <p className="error">{error}</p>}
-                    <button type="submit">Register</button>
+                    {error && <p className="error register-error">{error}</p>}
+                    <div className="button-row">
+                        <button type="submit">Register</button>
+                        <button
+                            type="button"
+                            onClick={() => navigate("/login-page")}>
+                            Login instead
+                        </button>
+                    </div>
                 </form>
             </main>
         </div>
