@@ -1,0 +1,24 @@
+{
+  "baseUrl": "/api",
+  "endpoints": {
+    "register": "/users",
+    "login": "/login"
+  },
+  "collections": [
+    {
+      "name": "users",
+      "fields": [
+        { "name": "email", "type": "string" },
+        { "name": "password", "type": "string" },
+        { "name": "roles", "type": "array" }
+      ],
+      "records": [
+        {
+          "email": "admin@bibliotheek.nl",
+          "password": "admin123",
+          "roles": ["admin"]
+        }
+      ]
+    }
+  ]
+}

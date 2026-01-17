@@ -5,6 +5,7 @@ import { CocktailContext } from "../../context/CocktailContext.jsx";
 import { FavoriteContext } from "../../context/FavoriteContext";
 import { isCocktailFavorite } from "../../helpers/favoriteCocktail.js";
 import { mlToOz } from "../../helpers/helperUnits.js";
+import { UserContext } from "../../context/UserContext";
 
 function CocktailDetailPage() {
     const { id } = useParams();
@@ -18,6 +19,8 @@ function CocktailDetailPage() {
     const { addCocktail } = useContext(CocktailContext);
     const { addFavorite, favoriteCocktails, removeFavorite } = useContext(FavoriteContext);
     const isFavorite = cocktail ? isCocktailFavorite(favoriteCocktails, cocktail) : false;
+
+    const { user } = useContext(UserContext);
 
     useEffect(() => {
         const fetchCocktail = async () => {
@@ -73,9 +76,11 @@ function CocktailDetailPage() {
                         <button
                             className="star-button"
                             onClick={() => {
+                                if (!user) return;
                                 if (isFavorite) removeFavorite(cocktail.idDrink);
                                 else addFavorite(cocktail);
                             }}
+                            disabled={!user}
                         >
                             {isFavorite ? "★" : "☆"}
                         </button>

@@ -2,10 +2,8 @@ import './RegisterPage.css'
 import {useState} from "react";
 import {useNavigate} from "react-router-dom";
 import axios from "axios";
+import {isValidPassword} from "../../helpers/isValidPassword.js";
 
-function isValidPassword(password) {
-    return password.length >= 8 && /\d/.test(password);
-}
 
 function RegisterPage() {
     const navigate = useNavigate();
@@ -28,7 +26,8 @@ function RegisterPage() {
         }
 
         try {
-            const response = await axios.post("/api/users", {email, password, roles: ["user"]},
+            const response = await axios.post(
+                "https://novi-backend-api-wgsgz.ondigitalocean.app/api/users", {email, password, roles: ["user"]},
                 {
                     headers: {
                         "Content-Type": "application/json",
@@ -38,6 +37,7 @@ function RegisterPage() {
             );
 
             const {token, user} = response.data;
+
             localStorage.setItem("token", token);
             localStorage.setItem("user", JSON.stringify(user));
             navigate("/login-page");
@@ -96,8 +96,15 @@ function RegisterPage() {
                                     : ""}
                         </p>
                     </section>
-                    {error && <p className="error">{error}</p>}
-                    <button type="submit">Register</button>
+                    {error && <p className="error register-error">{error}</p>}
+                    <div className="button-row">
+                        <button type="submit">Register</button>
+                        <button
+                            type="button"
+                            onClick={() => navigate("/login-page")}>
+                            Login instead
+                        </button>
+                    </div>
                 </form>
             </main>
         </div>

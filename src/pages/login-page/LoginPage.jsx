@@ -2,21 +2,18 @@ import './LoginPage.css'
 import {useContext, useState} from "react";
 import {useNavigate} from "react-router-dom";
 import axios from "axios";
-import { UserContext } from "../../context/UserContext";
+import {UserContext} from "../../context/UserContext";
+import {isValidPassword} from "../../helpers/isValidPassword.js";
 
 function LoginPage() {
     const navigate = useNavigate();
-    const { login } = useContext(UserContext);
+    const {login} = useContext(UserContext);
 
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [error, setError] = useState("");
 
     const [passwordTouched, setPasswordTouched] = useState(false);
-
-    function isValidPassword(password) {
-        return password.length >= 8 && /\d/.test(password);
-    }
 
     const passwordIsValid = isValidPassword(password);
 
@@ -26,7 +23,7 @@ function LoginPage() {
 
         try {
             const response = await axios.post(
-                "/api/login",
+                "https://novi-backend-api-wgsgz.ondigitalocean.app/api/login",
                 {
                     email,
                     password,
@@ -39,11 +36,13 @@ function LoginPage() {
                 }
             );
 
-            const { token, user } = response.data;
+            const {token, user} = response.data;
+            localStorage.setItem("token", token);
+            localStorage.setItem("user", JSON.stringify(user));
 
             login(token, user);
 
-            navigate("/profile-page");
+            navigate("/");
         } catch (err) {
             setError("Inloggen mislukt. Controleer je gegevens.");
         }
@@ -99,9 +98,15 @@ function LoginPage() {
                         </p>
                     </section>
 
-                    {error && <p className="error">{error}</p>}
-
-                    <button type="submit">Login</button>
+                    {error && <p className="error login-error">{error}</p>}
+                    <div className="button-row">
+                        <button type="submit">Login</button>
+                        <button
+                            type="button"
+                            onClick={() => navigate("/register-page")}>
+                            Or Register...
+                        </button>
+                    </div>
                 </form>
             </main>
         </div>

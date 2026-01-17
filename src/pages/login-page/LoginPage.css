@@ -16,6 +16,7 @@
     border-radius: 10px;
     gap: 30px;
     background-color: var(--white-color);
+    padding-bottom: 20px;
 }
 
 .login-form .form-title {
@@ -68,4 +69,10 @@
 
 .login-form .error.valid {
     color: #1E9A22;
+}
+
+.login-error {
+    font-size: 12px;
+    margin: 2px 0 0 12px;
+    color: red;
 }

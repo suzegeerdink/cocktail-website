@@ -24,7 +24,7 @@ function HighlightedCocktail({ drink }) {
             />
 
             <p>{ingredients.join(", ")}</p>
-            <Link to={`/cocktail-detail-page/${drink.idDrink}`} className="button-link">meer</Link>
+            <Link to={`/cocktail-detail-page/${drink.idDrink}`} className="button-link">more</Link>
         </div>
     )
 }
