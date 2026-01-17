@@ -23,7 +23,7 @@ function LoginPage() {
 
         try {
             const response = await axios.post(
-                "/api/login",
+                "https://novi-backend-api-wgsgz.ondigitalocean.app/api/login",
                 {
                     email,
                     password,
@@ -42,7 +42,7 @@ function LoginPage() {
 
             login(token, user);
 
-            navigate("/profile-page");
+            navigate("/");
         } catch (err) {
             setError("Inloggen mislukt. Controleer je gegevens.");
         }

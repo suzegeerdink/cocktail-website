@@ -26,7 +26,8 @@ function RegisterPage() {
         }
 
         try {
-            const response = await axios.post("/api/users", {email, password, roles: ["user"]},
+            const response = await axios.post(
+                "https://novi-backend-api-wgsgz.ondigitalocean.app/api/users", {email, password, roles: ["user"]},
                 {
                     headers: {
                         "Content-Type": "application/json",
