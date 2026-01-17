@@ -8,7 +8,16 @@
     {
       "name": "users",
       "fields": [
-        { "name": "email", "type": "string" }
+        { "name": "email", "type": "string" },
+        { "name": "password", "type": "string" },
+        { "name": "roles", "type": "array" }
+      ],
+      "records": [
+        {
+          "email": "admin@bibliotheek.nl",
+          "password": "admin123",
+          "roles": ["admin"]
+        }
       ]
     }
   ]
