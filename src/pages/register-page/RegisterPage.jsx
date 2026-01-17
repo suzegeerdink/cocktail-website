@@ -36,6 +36,7 @@ function RegisterPage() {
             );
 
             const {token, user} = response.data;
+
             localStorage.setItem("token", token);
             localStorage.setItem("user", JSON.stringify(user));
             navigate("/login-page");

@@ -1,0 +1,15 @@
+{
+  "baseUrl": "/api",
+  "endpoints": {
+    "register": "/users",
+    "login": "/login"
+  },
+  "collections": [
+    {
+      "name": "users",
+      "fields": [
+        { "name": "email", "type": "string" }
+      ]
+    }
+  ]
+}
